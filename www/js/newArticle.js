@@ -1,5 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+    navigator.splashscreen.hide(); //On cache le splashScreen
 
     //Image
     document.getElementById("picture_input").addEventListener("click", cameraTakePicture);

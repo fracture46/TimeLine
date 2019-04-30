@@ -18,6 +18,9 @@
     },
     "cordova-plugin-media-capture": {
       "PACKAGE_NAME": "io.cordova.timeline"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.cordova.timeline"
     }
   },
   "dependent_plugins": {

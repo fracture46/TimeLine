@@ -1,5 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
+    navigator.splashscreen.hide(); //On cache le splashScreen
 
     //Image
     document.getElementById("picture_input").addEventListener("click", cameraTakePicture);
@@ -12,7 +13,7 @@ function onDeviceReady() {
             var image = document.getElementById('myImage'); 
             image.src = "data:image/jpeg;base64," + imageData; 
         }
-        function onFail(message) { 
+        function onFail(message) {
             alert('Failed because: ' + message); 
         }
     }
@@ -22,7 +23,7 @@ function onDeviceReady() {
     function geolocationSuccess(position){
         var longitude = position.coords.longitude;
         var latitude = position.coords.latitude;
-        alert("localisation => longitude : " + longitude + " /  latitude : " + latitude);
+        //alert("localisation => longitude : " + longitude + " /  latitude : " + latitude);
     }
     function geolocationError(){
         alert("Impossible de localiser l'appareil !");

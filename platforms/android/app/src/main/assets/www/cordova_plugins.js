@@ -286,6 +286,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-media-capture/www/android/init.js",
       "pluginId": "cordova-plugin-media-capture",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -293,6 +301,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-geolocation": "4.0.1",
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-media-capture": "3.0.2"
+    "cordova-plugin-media-capture": "3.0.2",
+    "cordova-plugin-splashscreen": "5.0.2"
   };
 });
