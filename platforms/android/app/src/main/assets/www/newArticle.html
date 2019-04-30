@@ -14,11 +14,14 @@
         <img src="img/menu_icon.png" id="activeNav" />
         <div id="mySidenav" class="sidenav">
             <a class="closebtn" id="closeNav" onclick="closeNav()">&times;</a>
-            <a href="/index.html"><img src="img/list_icon.png" id="menu_list" /></a>
-            <a href="/newArticle.html"><img src="img/plus_icon.png" id="menu_plus" /></a>
+            <a href="./index.html"><img src="img/list_icon.png" id="menu_list" /></a>
+            <a href="./newArticle.html"><img src="img/plus_icon.png" id="menu_plus" /></a>
         </div>
         <div class="app">
-            
+            <textarea id="text_input" placeholder="Écrit ici ton histoire"></textarea>
+            <button id="picture_input">Prend une photo</button>
+            <button id="record_input">Enregistre une vidéo</button>
+            <button id="validate">Valider</button>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/newArticle.js"></script>
