@@ -11,5 +11,5 @@ function closeNav() {
 }
 
 function splashScreen(){
-    navigator.splashscreen.show();
+    navigator.splashscreen.show(); //ajouter un hide ici pour le retour au menu
 }

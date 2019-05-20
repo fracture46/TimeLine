@@ -20,19 +20,19 @@
         <allow-intent href="market:*" />
 
          <!-- you can use any density that exists in the Android project -->
-        <splash src="www/img/loading.png" density="land-ldpi"/>
-        <splash src="www/img/loading.png" density="land-mdpi"/>
-        <splash src="www/img/loading.png" density="land-hdpi"/>
-        <splash src="www/img/loading.png" density="land-xhdpi"/>
+        <splash src="www/img/loading.gif" density="land-ldpi"/>
+        <splash src="www/img/loading.gif" density="land-mdpi"/>
+        <splash src="www/img/loading.gif" density="land-hdpi"/>
+        <splash src="www/img/loading.gif" density="land-xhdpi"/>
 
-        <splash src="www/img/loading.png" density="port-ldpi"/>
-        <splash src="www/img/loading.png" density="port-mdpi"/>
-        <splash src="www/img/loading.png" density="port-hdpi"/>
-        <splash src="www/img/loading.png" density="port-xhdpi"/>
+        <splash src="www/img/loading.gif" density="port-ldpi"/>
+        <splash src="www/img/loading.gif" density="port-mdpi"/>
+        <splash src="www/img/loading.gif" density="port-hdpi"/>
+        <splash src="www/img/loading.gif" density="port-xhdpi"/>
     </platform>
     <platform name="windows">
-        <splash src="www/img/loading.png" target="SplashScreen"/>
-        <splash src="www/img/loading.png" target="SplashScreenPhone"/>
+        <splash src="www/img/loading.gif" target="SplashScreen"/>
+        <splash src="www/img/loading.gif" target="SplashScreenPhone"/>
     </platform>
     <!-- Configuration using MRT concept (Recommended, see "Windows-specific information" section for details): -->
     <preference name="SplashScreenDelay" value="3000" />

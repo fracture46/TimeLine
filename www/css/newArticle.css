@@ -1,24 +1,27 @@
 #text_input{
-    margin-top:8%;
+    display: block;
+    margin-top: 8%;
+    margin-left: auto;
+    margin-right: auto;
     width: 90%;
     height: 50%;
 }
 
-#picture_input, #record_input{
-    margin-top: 15px;
-    margin-bottom: 20px;
+.button {
+    margin-top: 12px;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#picture_input, #record_input, #use_coord{
+    background-color: #0f8aee;
 }
 
 #validate{
-    display:block;
-    margin:auto;
     background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
 }

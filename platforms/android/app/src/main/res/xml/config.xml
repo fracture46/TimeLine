@@ -38,14 +38,14 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
-    <splash density="land-hdpi" src="www/img/loading.png" />
-    <splash density="land-ldpi" src="www/img/loading.png" />
-    <splash density="land-mdpi" src="www/img/loading.png" />
-    <splash density="land-xhdpi" src="www/img/loading.png" />
-    <splash density="port-hdpi" src="www/img/loading.png" />
-    <splash density="port-ldpi" src="www/img/loading.png" />
-    <splash density="port-mdpi" src="www/img/loading.png" />
-    <splash density="port-xhdpi" src="www/img/loading.png" />
+    <splash density="land-ldpi" src="www/img/loading.gif" />
+    <splash density="land-mdpi" src="www/img/loading.gif" />
+    <splash density="land-hdpi" src="www/img/loading.gif" />
+    <splash density="land-xhdpi" src="www/img/loading.gif" />
+    <splash density="port-ldpi" src="www/img/loading.gif" />
+    <splash density="port-mdpi" src="www/img/loading.gif" />
+    <splash density="port-hdpi" src="www/img/loading.gif" />
+    <splash density="port-xhdpi" src="www/img/loading.gif" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="SplashScreenDelay" value="3000" />
 </widget>

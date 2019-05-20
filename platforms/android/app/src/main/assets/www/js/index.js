@@ -16,6 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    navigator.splashscreen.hide(); //On cache le splashScreen
+}
 var app = {
     // Application Constructor
     initialize: function() {
@@ -41,6 +45,7 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+    
 };
 
 app.initialize();
