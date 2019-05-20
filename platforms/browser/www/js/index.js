@@ -16,6 +16,51 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+function loadDataFromStorage(){
+    alert(localStorage.length);
+    for(var i = 0; i < localStorage.length; i++){
+        alert(i);
+        var articleRef = localStorage.key(i);
+        var JSONObject = localStorage.getItem(articleRef);
+        var parsedJSON = JSON.parse(JSONObject);
+        alert("parsed : "+parsedJSON);
+        var articleDate = parsedJSON["date"];
+        var articleContent;
+        articleContent = document.createElement("div");
+        articleContent.className = "article";
+        articleContent.id = articleDate;
+        var titleNode = document.createElement("h2");
+        titleNode.textContent = "le "+articleDate;
+        articleContent.appendChild(titleNode);
+
+        if(parsedJSON["text"] != undefined){
+            var textNode = document.createElement("p");
+            textNode.className = "text_display";
+            textNode.textContent = parsedJSON["text"];
+            articleContent.appendChild(textNode);
+        }
+        /*if(parsedJSON["video"] != undefined) {
+            articleContent += '<video class="video_display" controls> <source src="'+parsedJSON["video"] +'" type="video/mp4"></video>';
+        }*/
+        if(parsedJSON["image"] != undefined) {
+            var imageNode = document.createElement("img");
+            imageNode.className = "image_display";
+            imageNode.src = parsedJSON["image"];
+            articleContent.appendChild(imageNode);
+        }
+        if(parsedJSON["coords"] != undefined) {
+            var CoordNode = document.createElement("p");
+            CoordNode.className = "coord_display";
+            CoordNode.textContent = parsedJSON["text"];
+            articleContent.appendChild(CoordNode);
+        }
+        alert("détails : "+ parsedJSON["text"], parsedJSON["video"], parsedJSON["image"], parsedJSON["coords"]);
+        document.getElementById("app").appendChild(articleContent);
+    }
+}
+//Appel pour chargement des articles
+loadDataFromStorage();
+
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     navigator.splashscreen.hide(); //On cache le splashScreen

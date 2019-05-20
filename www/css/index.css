@@ -62,3 +62,8 @@ h1 {
     padding:0px;
     text-align:center;
 }
+
+.image_display, .video_display{
+    max-height:30%;
+    max-width: 100%;
+}

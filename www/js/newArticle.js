@@ -14,7 +14,7 @@ function onDeviceReady() {
             quality: 90, 
             destinationType: Camera.DestinationType.DATA_URL 
         });
-        function onSuccess(imageDataRaw) { 
+        function onSuccess(imageDataRaw) {
             imageData = "data:image/jpeg;base64," + imageDataRaw;
             alert("Photo prise en compte.");
         }
@@ -60,14 +60,30 @@ function onDeviceReady() {
     document.getElementById("validate").addEventListener("click", saveArticle);
     function saveArticle(){
         var articleDate = Date.now(); 
+        //alert(articleDate);
+        //alert(videoData);
+        alert(coordsData);
+        //alert(document.getElementById("text_input").value);
         var article = {
             date : articleDate,
-            text : document.getElementById("text_input").text,
+            text : document.getElementById("text_input").value,
             image : imageData,
             video : videoData,
             coord : coordsData
         }
         var articleJSON = JSON.stringify(article);
+
+        //Mise à jour de l'ordre pour que la tâche ajoutée soit affichée en cas de rechargement sans changement d'ordre
+        /*var order = $("#todolist").sortable('toArray').toString();
+        console.log(order);
+        var orderArray = {
+            order : order.split(',')
+        };
+        console.log(orderArray);
+        var orderdJSON = JSON.stringify(orderArray);
+        console.log(orderdJSON);
+        localStorage.setItem("sortOrder",orderdJSON);*/
+
         localStorage.setItem(articleDate,articleJSON);
         alert("test : item saved => redirect !");
         //Redirection vers le menu

@@ -14,9 +14,7 @@ function onDeviceReady() {
             quality: 90, 
             destinationType: Camera.DestinationType.DATA_URL 
         });
-        function onSuccess(imageDataRaw) { 
-            //var image = document.getElementById('myImage'); 
-            //image.src = "data:image/jpeg;base64," + imageDataRaw; 
+        function onSuccess(imageDataRaw) {
             imageData = "data:image/jpeg;base64," + imageDataRaw;
             alert("Photo prise en compte.");
         }
@@ -62,9 +60,13 @@ function onDeviceReady() {
     document.getElementById("validate").addEventListener("click", saveArticle);
     function saveArticle(){
         var articleDate = Date.now(); 
+        //alert(articleDate);
+        //alert(videoData);
+        alert(coordsData);
+        //alert(document.getElementById("text_input").value);
         var article = {
             date : articleDate,
-            text : document.getElementById("text_input").text,
+            text : document.getElementById("text_input").value,
             image : imageData,
             video : videoData,
             coord : coordsData

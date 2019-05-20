@@ -14,10 +14,10 @@ function onDeviceReady() {
             quality: 90, 
             destinationType: Camera.DestinationType.DATA_URL 
         });
-        function onSuccess(imageData) { 
-            var image = document.getElementById('myImage'); 
-            image.src = "data:image/jpeg;base64," + imageData; 
-            imageData = image.src;
+        function onSuccess(imageDataRaw) { 
+            //var image = document.getElementById('myImage'); 
+            //image.src = "data:image/jpeg;base64," + imageDataRaw; 
+            imageData = "data:image/jpeg;base64," + imageDataRaw;
             alert("Photo prise en compte.");
         }
         function onFail(message) {
@@ -64,7 +64,7 @@ function onDeviceReady() {
         var articleDate = Date.now(); 
         var article = {
             date : articleDate,
-            text : document.getElementById("text_input").text,
+            text : document.getElementById("text_input").value,
             image : imageData,
             video : videoData,
             coord : coordsData
@@ -82,7 +82,7 @@ function onDeviceReady() {
         console.log(orderdJSON);
         localStorage.setItem("sortOrder",orderdJSON);*/
 
-        localStorage.setItem(newArticle,articleJSON);
+        localStorage.setItem(articleDate,articleJSON);
         alert("test : item saved => redirect !");
         //Redirection vers le menu
         window.location = "index.html";
