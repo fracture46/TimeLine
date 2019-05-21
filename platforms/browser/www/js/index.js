@@ -17,14 +17,17 @@
  * under the License.
  */
 function loadDataFromStorage(){
-    alert(localStorage.length);
     for(var i = 0; i < localStorage.length; i++){
-        alert(i);
         var articleRef = localStorage.key(i);
         var JSONObject = localStorage.getItem(articleRef);
         var parsedJSON = JSON.parse(JSONObject);
-        alert("parsed : "+parsedJSON);
-        var articleDate = parsedJSON["date"];
+        var articleDateBase = parsedJSON["date"]
+        if(articleDateBase.indexOf("_") != -1) {
+            var articleDateExploded = articleDateBase.split("_");
+            articleDateBase = articleDateExploded[0];
+        }
+        var articleDateExploded = articleDateBase.split("-");
+        var articleDate = articleDateExploded[2] + "/" + articleDateExploded[1] + "/" + articleDateExploded[0];
         var articleContent;
         articleContent = document.createElement("div");
         articleContent.className = "article";
@@ -33,28 +36,31 @@ function loadDataFromStorage(){
         titleNode.textContent = "le "+articleDate;
         articleContent.appendChild(titleNode);
 
+        if(parsedJSON["coord"] != undefined) {
+            var CoordNode = document.createElement("p");
+            CoordNode.className = "coord_display";
+            CoordNode.textContent = parsedJSON["coord"];
+            articleContent.appendChild(CoordNode);
+        }
         if(parsedJSON["text"] != undefined){
             var textNode = document.createElement("p");
             textNode.className = "text_display";
             textNode.textContent = parsedJSON["text"];
             articleContent.appendChild(textNode);
         }
-        /*if(parsedJSON["video"] != undefined) {
-            articleContent += '<video class="video_display" controls> <source src="'+parsedJSON["video"] +'" type="video/mp4"></video>';
-        }*/
+        if(parsedJSON["video"] != undefined) {
+            var videoNode = document.createElement("video");
+            videoNode.className = "video_display";
+            videoNode.src = parsedJSON["video"];
+            videoNode.controls = "controls";
+            articleContent.appendChild(videoNode);
+        }
         if(parsedJSON["image"] != undefined) {
             var imageNode = document.createElement("img");
             imageNode.className = "image_display";
             imageNode.src = parsedJSON["image"];
             articleContent.appendChild(imageNode);
         }
-        if(parsedJSON["coords"] != undefined) {
-            var CoordNode = document.createElement("p");
-            CoordNode.className = "coord_display";
-            CoordNode.textContent = parsedJSON["text"];
-            articleContent.appendChild(CoordNode);
-        }
-        alert("détails : "+ parsedJSON["text"], parsedJSON["video"], parsedJSON["image"], parsedJSON["coords"]);
         document.getElementById("app").appendChild(articleContent);
     }
 }

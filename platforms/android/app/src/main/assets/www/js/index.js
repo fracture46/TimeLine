@@ -17,12 +17,17 @@
  * under the License.
  */
 function loadDataFromStorage(){
-    alert(localStorage.length);
     for(var i = 0; i < localStorage.length; i++){
         var articleRef = localStorage.key(i);
         var JSONObject = localStorage.getItem(articleRef);
         var parsedJSON = JSON.parse(JSONObject);
-        var articleDate = parsedJSON["date"];
+        var articleDateBase = parsedJSON["date"]
+        if(articleDateBase.indexOf("_") != -1) {
+            var articleDateExploded = articleDateBase.split("_");
+            articleDateBase = articleDateExploded[0];
+        }
+        var articleDateExploded = articleDateBase.split("-");
+        var articleDate = articleDateExploded[2] + "/" + articleDateExploded[1] + "/" + articleDateExploded[0];
         var articleContent;
         articleContent = document.createElement("div");
         articleContent.className = "article";

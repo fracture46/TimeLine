@@ -14,14 +14,12 @@ function onDeviceReady() {
             quality: 90, 
             destinationType: Camera.DestinationType.DATA_URL 
         });
-        function onSuccess(imageDataRaw) { 
-            //var image = document.getElementById('myImage'); 
-            //image.src = "data:image/jpeg;base64," + imageDataRaw; 
+        function onSuccess(imageDataRaw) {
             imageData = "data:image/jpeg;base64," + imageDataRaw;
             alert("Photo prise en compte.");
         }
         function onFail(message) {
-            alert('Failed because: ' + message); 
+            alert('Erreur : ' + message); 
         }
     }
 
@@ -58,10 +56,41 @@ function onDeviceReady() {
         navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1});
     }
 
+    function checkExist(date) {
+        for(var i = 0; i < localStorage.length; i++){
+            var listName = localStorage.key(i);
+            var JSONObject = localStorage.getItem(listName);
+            var parsedJSON = JSON.parse(JSONObject);
+            var articleDateFor = parsedJSON["date"];
+            if(articleDateFor == date){
+                return true;
+            }
+        }
+        return false;
+    }
+
     //Validation de l'article
     document.getElementById("validate").addEventListener("click", saveArticle);
     function saveArticle(){
-        var articleDate = Date.now(); 
+        currentDate = new Date();
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth()+1; //car Janvier vaut 0
+        var year = currentDate.getFullYear();
+        var articleDate = year + "-" + month + "-" + day;
+
+        //Vérification que la date n'existe pas déjà dans le localStorage
+        var k = 1;
+        var dateExist = checkExist(articleDate);
+        while(dateExist != false) {
+            if(articleDate.indexOf("_") != -1) {
+                var articleDateExploded = articleDate.split("_");
+                articleDate = articleDateExploded[0];
+            }
+            articleDate = articleDate + "_" + k;
+            k++;
+            dateExist = checkExist(articleDate);
+        }
+
         var article = {
             date : articleDate,
             text : document.getElementById("text_input").value,
@@ -70,20 +99,7 @@ function onDeviceReady() {
             coord : coordsData
         }
         var articleJSON = JSON.stringify(article);
-
-        //Mise à jour de l'ordre pour que la tâche ajoutée soit affichée en cas de rechargement sans changement d'ordre
-        /*var order = $("#todolist").sortable('toArray').toString();
-        console.log(order);
-        var orderArray = {
-            order : order.split(',')
-        };
-        console.log(orderArray);
-        var orderdJSON = JSON.stringify(orderArray);
-        console.log(orderdJSON);
-        localStorage.setItem("sortOrder",orderdJSON);*/
-
         localStorage.setItem(articleDate,articleJSON);
-        alert("test : item saved => redirect !");
         //Redirection vers le menu
         window.location = "index.html";
     }
